@@ -10,7 +10,7 @@
 
 ### **Phase 1: MVP Core Implementation**
 - [x] **Task 1.1:** Project Structure and Dependencies Setup
-- [ ] **Task 1.2:** DSPy Signature Definitions  
+- [x] **Task 1.2:** DSPy Signature Definitions  
 - [ ] **Task 1.3:** Core TestGenEnsemble Module Implementation
 - [ ] **Task 1.4:** Filtration Pipeline Implementation
 - [ ] **Task 1.5:** File I/O and Test Parsing Utilities
@@ -78,18 +78,18 @@
 **Description:** Implement the structured DSPy signatures that will serve as the interface between the ensemble system and the LLMs, ensuring each strategy has clear input/output specifications.
 
 **Subtasks:**
-- [ ] Create `src/pytestgen_llm/core/signatures.py` file
-- [ ] Implement `ExtendCoverageSignature` class with proper field descriptions
-- [ ] Implement `CornerCasesSignature` class with edge case focus
-- [ ] Implement `ExtendTestSignature` class for test-only input scenarios
-- [ ] Implement `StatementCompleteSignature` class for completion-style prompts
-- [ ] Add comprehensive docstrings explaining each signature's purpose and expected outputs
-- [ ] Create validation functions to ensure signature inputs meet requirements
-- [ ] Add type hints and Pydantic models for input validation
-- [ ] Write unit tests for each signature using pytest to verify proper DSPy integration
-- [ ] Create test fixtures for signature validation and mocking
-- [ ] Add pytest tests for signature field validation and error handling
-- [ ] Implement pytest tests for signature integration with DSPy framework
+- [x] Create `src/pytestgen_llm/core/signatures.py` file
+- [x] Implement `ExtendCoverageSignature` class with proper field descriptions
+- [x] Implement `CornerCasesSignature` class with edge case focus
+- [x] Implement `ExtendTestSignature` class for test-only input scenarios
+- [x] Implement `StatementCompleteSignature` class for completion-style prompts
+- [x] Add comprehensive docstrings explaining each signature's purpose and expected outputs
+- [x] Create validation functions to ensure signature inputs meet requirements
+- [x] Add type hints and Pydantic models for input validation
+- [x] Write unit tests for each signature using pytest to verify proper DSPy integration
+- [x] Create test fixtures for signature validation and mocking
+- [x] Add pytest tests for signature field validation and error handling
+- [x] Implement pytest tests for signature integration with DSPy framework
 
 #### **Task 1.3: Core TestGenEnsemble Module Implementation**
 **Objective:** Build the central ensemble module that orchestrates multiple LLM strategies and temperature settings.
