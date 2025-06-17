@@ -21,6 +21,7 @@ import dspy
 # Signatures in DSPy define the input and output structure for language model calls.
 # They act like function signatures, specifying what the model should expect and return.
 
+
 class QuestionAnswering(dspy.Signature):
     """
     A DSPy signature for basic question answering.
@@ -32,6 +33,7 @@ class QuestionAnswering(dspy.Signature):
 
     This signature takes a question and produces a reasoned answer.
     """
+
     # Input field: the question to be answered
     question = dspy.InputField(desc="A question that needs to be answered")
 
@@ -46,14 +48,18 @@ class FactChecker(dspy.Signature):
     This demonstrates how signatures can be used for different types of tasks
     beyond simple question-answering.
     """
+
     statement = dspy.InputField(desc="A statement to fact-check")
-    is_factual = dspy.OutputField(desc="Whether the statement appears to be factual (Yes/No)")
+    is_factual = dspy.OutputField(
+        desc="Whether the statement appears to be factual (Yes/No)"
+    )
     explanation = dspy.OutputField(desc="Brief explanation of the assessment")
 
 
 # === DSPy Module Definitions ===
 # Modules in DSPy are composable components that use signatures to perform tasks.
 # They can be chained together to create complex reasoning workflows.
+
 
 class SimpleQA(dspy.Module):
     """
@@ -116,7 +122,7 @@ class EnhancedQA(dspy.Module):
             question=question,
             answer=qa_result.answer,
             is_factual=fact_check_result.is_factual,
-            fact_check_explanation=fact_check_result.explanation
+            fact_check_explanation=fact_check_result.explanation,
         )
 
 
@@ -146,7 +152,7 @@ def setup_openrouter_lm() -> dspy.LM | None:
             api_base="https://openrouter.ai/api/v1",  # OpenRouter API endpoint
             api_key=api_key,
             max_tokens=1000,  # Limit response length
-            temperature=0.7   # Control randomness (0.0 = deterministic, 1.0 = very random)
+            temperature=0.7,  # Control randomness (0.0 = deterministic, 1.0 = very random)
         )
 
         print(f"✅ Connected to OpenRouter with model: {lm.model}")
@@ -166,9 +172,9 @@ def demonstrate_basic_qa():
     2. Ask it a question
     3. Display the results
     """
-    print("\n" + "="*50)
+    print("\n" + "=" * 50)
     print("🤖 Basic Question Answering Demo")
-    print("="*50)
+    print("=" * 50)
 
     # Create our QA module
     qa_module = SimpleQA()
@@ -177,7 +183,7 @@ def demonstrate_basic_qa():
     questions = [
         "What is the capital of France?",
         "How does photosynthesis work?",
-        "What are the benefits of using DSPy for AI programming?"
+        "What are the benefits of using DSPy for AI programming?",
     ]
 
     for i, question in enumerate(questions, 1):
@@ -191,7 +197,7 @@ def demonstrate_basic_qa():
             print(f"🎯 Answer: {result.answer}")
 
             # DSPy modules often include reasoning traces
-            if hasattr(result, 'rationale'):
+            if hasattr(result, "rationale"):
                 print(f"🧠 Reasoning: {result.rationale}")
 
             # Show the prompt history for debugging
@@ -210,9 +216,9 @@ def demonstrate_enhanced_qa():
     This shows a more complex DSPy workflow where multiple modules
     work together to provide better results.
     """
-    print("\n" + "="*50)
+    print("\n" + "=" * 50)
     print("🔍 Enhanced QA with Fact-Checking Demo")
-    print("="*50)
+    print("=" * 50)
 
     # Create our enhanced QA module
     enhanced_qa = EnhancedQA()
@@ -260,7 +266,9 @@ def main():
     # Step 1: Setup the language model
     lm = setup_openrouter_lm()
     if not lm:
-        print("\n❌ Cannot proceed without a language model. Please check your API key.")
+        print(
+            "\n❌ Cannot proceed without a language model. Please check your API key."
+        )
         return
 
     # Step 2: Configure DSPy to use our language model with debugging enabled
@@ -283,21 +291,23 @@ def main():
         # Enhanced QA demonstration
         demonstrate_enhanced_qa()
 
-        print("\n" + "="*50)
+        print("\n" + "=" * 50)
         print("🎉 DSPy 101 Complete!")
-        print("="*50)
+        print("=" * 50)
         print("Key concepts demonstrated:")
         print("• 📋 Signatures: Define input/output structure")
         print("• 🧩 Modules: Composable reasoning components")
         print("• 🔗 Chaining: Connecting modules for complex workflows")
         print("• 🤖 LM Integration: Using external language models")
         print("• 🔍 Debugging: Inspecting generated prompts and traces")
-        print("\nNext steps: Explore DSPy optimizers, custom modules, and advanced agents!")
+        print(
+            "\nNext steps: Explore DSPy optimizers, custom modules, and advanced agents!"
+        )
 
         # Show complete history at the end for reference
-        print("\n" + "="*50)
+        print("\n" + "=" * 50)
         print("🔍 COMPLETE PROMPT HISTORY")
-        print("="*50)
+        print("=" * 50)
         print("Here's a summary of all prompts generated during this session:")
         dspy.inspect_history()
 

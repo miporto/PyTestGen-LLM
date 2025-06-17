@@ -20,7 +20,9 @@ def test_package_structure():
     for dirname in expected_dirs:
         dir_path = src_dir / dirname
         assert dir_path.exists(), f"Directory {dirname} should exist"
-        assert (dir_path / "__init__.py").exists(), f"Directory {dirname} should have __init__.py"
+        assert (dir_path / "__init__.py").exists(), (
+            f"Directory {dirname} should have __init__.py"
+        )
 
 
 def test_main_package_imports():
@@ -39,6 +41,7 @@ def test_cli_entry_point():
     """Test that CLI entry point can be imported."""
     try:
         from pytestgen_llm.cli.main import main
+
         assert callable(main)
     except ImportError as e:
         pytest.skip(f"CLI not yet implemented: {e}")
@@ -63,4 +66,6 @@ def test_test_structure():
     for dirname in expected_test_dirs:
         dir_path = tests_dir / dirname
         assert dir_path.exists(), f"Test directory {dirname} should exist"
-        assert (dir_path / "__init__.py").exists(), f"Test directory {dirname} should have __init__.py"
+        assert (dir_path / "__init__.py").exists(), (
+            f"Test directory {dirname} should have __init__.py"
+        )

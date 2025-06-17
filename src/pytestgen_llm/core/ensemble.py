@@ -14,7 +14,9 @@ class TestGenEnsemble:
         # TODO: Initialize strategy predictors
         pass
 
-    def forward(self, test_class, source_class=None, strategies=None, temperatures=None):
+    def forward(
+        self, test_class, source_class=None, strategies=None, temperatures=None
+    ):
         """
         Run ensemble generation across multiple strategies and temperatures.
 

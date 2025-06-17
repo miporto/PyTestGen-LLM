@@ -15,7 +15,9 @@ def measure_baseline_coverage(test_file_path: str) -> dict[str, Any]:
     raise NotImplementedError("Coverage measurement not yet implemented")
 
 
-def calculate_coverage_delta(baseline: dict[str, Any], new_coverage: dict[str, Any]) -> float:
+def calculate_coverage_delta(
+    baseline: dict[str, Any], new_coverage: dict[str, Any]
+) -> float:
     """
     Calculate the coverage improvement between baseline and new coverage.
 
